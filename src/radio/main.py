@@ -23,6 +23,7 @@ def run():
 
     state.radio_stations = station_list.get_station_list()
     state.selected_radio_station = 0
+    state.play_radio_station = -1
 
 
     # pi_pins.bind_pins()

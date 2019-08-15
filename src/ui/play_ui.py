@@ -22,11 +22,11 @@ class PlayUI:
         song_frame = tk.Frame(self.window, relief=tk.SOLID, bd=1, bg="#000")
         song = player.get_song(state.radio_stations[state.play_radio_station][2])
         if old_song is not song and len(song) > 2:
-            tk.Label(song_frame, text=song, bg="#000", font=(FONT_REGULAR, 30), fg="#fff").pack()
+            tk.Label(song_frame, text=song, bg="#000", font=(FONT_REGULAR, 30), fg="#fff", padx=10).pack()
             song_frame.place(x=50, y=580)
             old_song = song
         else:
-            tk.Label(song_frame, text=old_song, bg="#000", font=(FONT_REGULAR, 30), fg="#fff").pack()
+            tk.Label(song_frame, text=old_song, bg="#000", font=(FONT_REGULAR, 30), fg="#fff", padx=10).pack()
             song_frame.place(x=50, y=580)
         if old_song_frame is not None:
             old_song_frame.destroy()

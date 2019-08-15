@@ -32,7 +32,7 @@ class StartUI:
         weather_frame = tk.Frame(self.window, relief=tk.SOLID, bd=1, bg="#000")
         weather_data = weather.get_weather()
 
-        weather_icon = tk.PhotoImage(file=RES_PATH + "weather_icons/" + weather_data[2] + ".png")
+        weather_icon = tk.PhotoImage(file=RES_PATH + "icons/weather/" + weather_data[2] + ".png")
         icon_label = tk.Label(weather_frame, image=weather_icon, bg="#000")
         icon_label.image = weather_icon
         icon_label.grid(row=0, column=0, rowspan=2, sticky=tk.W, padx=30)

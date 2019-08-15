@@ -28,8 +28,9 @@ def scroll_menu_down(window, state):
 
 
 def play_radio(window, state):
-    state.play_radio_station = state.selected_radio_station
-    main.play(state)
+    if state.play_radio_station is not state.selected_radio_station:
+        state.play_radio_station = state.selected_radio_station
+        main.play(state)
     main.change_ui(window, state, "play_ui")
 
 
