@@ -2,7 +2,7 @@ from src.globals import *
 from src.radio import player
 
 import tkinter as tk
-o
+
 
 class PlayUI:
 
@@ -11,7 +11,6 @@ class PlayUI:
         self.actual_station(state)
         self.refresh_actual_station_song(state, "")
         self.station_cover(state)
-
 
     def actual_station(self, state):
         play_station = tk.Frame(self.window, relief=tk.SOLID, bd=1, bg="#000")
