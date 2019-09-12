@@ -1,6 +1,7 @@
 import csv
+
 from globals import *
-import os
+
 
 # structure of the csv-file
 # filename, country

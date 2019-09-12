@@ -1,7 +1,6 @@
-from globals import *
-from radio import player
-
 import tkinter as tk
+
+from globals import *
 
 
 class SettingUI:
@@ -15,16 +14,20 @@ class SettingUI:
             selected_entry_frame = tk.Frame(self.window, relief=tk.SOLID, bd=1, bg="#000000")
             if station_[0] is state.play_radio_station:
                 playing_icon = tk.PhotoImage(file=RES_PATH + "icons/playing/playing_big.png")
-                icon_label = tk.Label(selected_entry_frame, image=playing_icon, bg="#000000", font=(FONT_SEMIBOLD, 70), fg="#ffffff")
+                icon_label = tk.Label(selected_entry_frame, image=playing_icon, bg="#000000", font=(FONT_SEMIBOLD, 70),
+                                      fg="#ffffff")
                 icon_label.image = playing_icon
                 icon_label.grid(row=0, column=0, sticky=tk.W, padx=10)
-                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_SEMIBOLD, 70), fg="#ffffff").grid(row=0, column=1, sticky=tk.W)
+                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_SEMIBOLD, 70),
+                         fg="#ffffff").grid(row=0, column=1, sticky=tk.W)
             else:
-                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_SEMIBOLD, 70), fg="#ffffff").grid(row=0, column=0, sticky=tk.W)
+                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_SEMIBOLD, 70),
+                         fg="#ffffff").grid(row=0, column=0, sticky=tk.W)
             selected_entry_frame.place(x=70, y=300)
             selected_entry_description_frame = tk.Frame(self.window, relief=tk.SOLID, bd=1, bg="#000000")
             # TODO set Label
-            tk.Label(selected_entry_description_frame, text="test", bg="#000000", font=(FONT_REGULAR, 25), fg="#cccccc", padx=10).grid(row=0, column=0, sticky=tk.NW)
+            tk.Label(selected_entry_description_frame, text="test", bg="#000000", font=(FONT_REGULAR, 25), fg="#cccccc",
+                     padx=10).grid(row=0, column=0, sticky=tk.NW)
             selected_entry_description_frame.place(x=70, y=400)
 
         def unselected_entry(station_, count):
@@ -48,12 +51,15 @@ class SettingUI:
                 if count > 4 or count < -4:
                     count = 5
                 playing_icon = tk.PhotoImage(file=RES_PATH + "icons/playing/playing" + str(abs(count)) + ".png")
-                icon_label = tk.Label(selected_entry_frame, image=playing_icon, bg="#000000", font=(FONT_REGULAR, 40), fg=color)
+                icon_label = tk.Label(selected_entry_frame, image=playing_icon, bg="#000000", font=(FONT_REGULAR, 40),
+                                      fg=color)
                 icon_label.image = playing_icon
                 icon_label.grid(row=0, column=0, sticky=tk.W, padx=10)
-                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_REGULAR, 40), fg=color).grid(row=0, column=1, sticky=tk.SW)
+                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_REGULAR, 40),
+                         fg=color).grid(row=0, column=1, sticky=tk.SW)
             else:
-                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_REGULAR, 40), fg=color, padx=10).grid(row=0, column=0, sticky=tk.NW)
+                tk.Label(selected_entry_frame, text=station_[1].upper(), bg="#000000", font=(FONT_REGULAR, 40),
+                         fg=color, padx=10).grid(row=0, column=0, sticky=tk.NW)
             selected_entry_frame.place(x=50, y=y)
 
         selected_entry(state.radio_stations[state.selected_radio_station_setting_ui])
@@ -76,8 +82,3 @@ class SettingUI:
 
         for num, station in enumerate(menu_up, start=1):
             unselected_entry(station, -num)
-
-
-
-
-

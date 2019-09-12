@@ -1,7 +1,8 @@
-import vlc
 import os
 import re
 import struct
+
+import vlc
 
 try:
     import urllib2
@@ -9,7 +10,6 @@ except ImportError:
     import urllib.request as urllib2
 
 HOST_UP = True if os.system('ping -c 1 google.com') is 0 else False
-
 
 instance = vlc.Instance('--input-repeat=-1')
 vlc_player = instance.media_player_new()
@@ -56,4 +56,3 @@ def get_song(url):
                 if check:
                     output = str(song[adjusted_pos_a:pos_b])
         return output
-

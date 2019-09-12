@@ -1,12 +1,10 @@
-from globals import *
-
 import pygame as pg
 
+from globals import *
 from ui.helper import cut_text
 
 
 def run(window, state):
-
     def selected_entry(station_):
         if station_[0] is state.play_radio_station:
             playing_icon = pg.image.load(RES_PATH + "icons/playing/playing_big.png")
@@ -46,7 +44,8 @@ def run(window, state):
         else:
             color = [51, 51, 51]
 
-        station_name = cut_text.get_first_line(station_[1].upper(), pg.font.Font(FONT_REGULAR_PATH, 40), WINDOW_WIDTH - 120)
+        station_name = cut_text.get_first_line(station_[1].upper(), pg.font.Font(FONT_REGULAR_PATH, 40),
+                                               WINDOW_WIDTH - 120)
         if station_[0] is state.play_radio_station:
             if count > 4 or count < -4:
                 count = 5
@@ -85,6 +84,3 @@ def run(window, state):
         unselected_entry(station, -num, selected_description_length)
 
     pg.display.flip()
-
-
-

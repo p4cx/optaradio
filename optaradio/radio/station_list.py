@@ -1,9 +1,12 @@
 import csv
+
 from globals import *
 
 
 # structure of the csv-file
-# id;name;url;description;cover
+# id;name;url;description;cover-image;nation
+# 2;Groove Salad;http://ice1.somafm.com/groovesalad-256-mp3;A nicely chilled plate of ambient/downtempo beats and
+# grooves.;groove_salad.png;United States
 
 
 def get_station_list():
@@ -11,6 +14,7 @@ def get_station_list():
     station_list = []
     for row in reader:
         station_list.append(row)
+        print(row)
     reader = csv.reader(open(UNICODE_FLAG_LIST, newline='', encoding='utf-8'), delimiter=';')
     flag_list = []
     for row in reader:
@@ -24,6 +28,7 @@ def get_station_list():
         for country in flag_list:
             if station[5] == country[1]:
                 sorted_station_list[num][5] = country[0]
+    print(station_list)
     return sorted_station_list
 
 

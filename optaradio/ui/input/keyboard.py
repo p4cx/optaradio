@@ -1,12 +1,11 @@
+import sys
+
 import pygame as pg
 
 from radio import main
 
-import sys
-
 
 def check_keyboard_events(window, state):
-
     def close():
         pg.quit()
         sys.exit()
@@ -59,6 +58,7 @@ def clean_radio(window, state):
         main.change_ui(window, state, "start_ui")
     else:
         main.change_ui(window, state, "menu_ui")
+
 
 def scroll_menu_up(window, state):
     if state.actual_ui is not "setting_ui":

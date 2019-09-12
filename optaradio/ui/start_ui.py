@@ -1,9 +1,9 @@
-from radio import weather
-from globals import *
+import time as t
 
 import pygame as pg
 
-import time as t
+from globals import *
+from radio import weather
 
 
 def run(window):
@@ -39,9 +39,3 @@ def add_weather(window):
     window.blit(text, (230, 450))
 
     pg.display.update(pg.Rect((0, 370), (1000, 180)))
-
-
-
-
-
-

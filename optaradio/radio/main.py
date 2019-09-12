@@ -1,13 +1,9 @@
 import pygame as pg
 
-
-import time
-import sys
-
-from ui.helper import cut_text, decode_flag_to_csv
-from ui import start_ui, menu_ui, play_ui, setting_ui
 from globals import *
 from radio import actual_state, station_list, player, loop
+from ui import start_ui, menu_ui, play_ui, setting_ui
+from ui.helper import cut_text, decode_flag_to_csv
 
 
 def run():
@@ -81,4 +77,3 @@ def get_prepare_radio_stations():
         station[3] = cut_text.get_multi_line(station[3], pg.font.Font(FONT_REGULAR_PATH, 25), WINDOW_WIDTH - 120)
 
     return radio_stations
-

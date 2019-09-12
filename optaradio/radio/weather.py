@@ -1,5 +1,6 @@
-import urllib.request
 import json
+import urllib.request
+
 from globals import *
 
 
