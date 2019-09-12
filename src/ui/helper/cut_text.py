@@ -4,7 +4,7 @@ from itertools import chain
 def trunc_line(text, font, max_width):
     real = len(text)
     s_text = text
-    le = font.measure(text)
+    le = font.size(text)[0]
     cut = 0
     a = 0
     done = 1
@@ -16,7 +16,7 @@ def trunc_line(text, font, max_width):
             s_text = n[:-cut]
         else:
             s_text = n
-        le = font.measure(s_text)
+        le = font.size(s_text)[0]
         real = len(s_text)
         done = 0
     return real, done, s_text

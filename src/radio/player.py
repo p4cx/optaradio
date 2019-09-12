@@ -12,7 +12,7 @@ HOST_UP = True if os.system('ping -c 1 google.com') is 0 else False
 
 
 instance = vlc.Instance('--input-repeat=-1')
-player = instance.media_player_new()
+vlc_player = instance.media_player_new()
 
 
 def change_station(url):
@@ -20,12 +20,12 @@ def change_station(url):
     if HOST_UP:
         stream = instance.media_new(url)
         stream.get_mrl()
-        player.set_media(stream)
-        player.play()
+        vlc_player.set_media(stream)
+        vlc_player.play()
 
 
 def stop():
-    player.stop()
+    vlc_player.stop()
 
 
 def get_song(url):
@@ -33,7 +33,7 @@ def get_song(url):
         request = urllib2.Request(url, headers={'Icy-MetaData': 1})
         response = urllib2.urlopen(request)
         meta_int = int(response.headers['icy-metaint'])
-        output = ' '
+        output = ''
         response.read(meta_int)
         metadata_length = struct.unpack('B', response.read(1))[0] * 16
         metadata = response.read(metadata_length).rstrip(b'\0')
@@ -54,6 +54,6 @@ def get_song(url):
                 if adjusted_pos_a >= pos_b:
                     check = False
                 if check:
-                    output = song[adjusted_pos_a:pos_b]
+                    output = str(song[adjusted_pos_a:pos_b])
         return output
 

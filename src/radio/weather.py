@@ -1,6 +1,6 @@
 import urllib.request
 import json
-from src.globals import *
+from globals import *
 
 
 def get_weather():
@@ -22,7 +22,7 @@ def get_weather():
 
     except Exception as e:
         print(e)
-        weather_text_temp = 'No weather data available'
-        weather_text_desc = 'Check your internet connection'
+        weather_text_temp = ''
+        weather_text_desc = ''
         icon_code = 'error'
         return weather_text_temp, weather_text_desc, icon_code
