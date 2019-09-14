@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+    <head>
+        {% block head %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='./mini.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='./style.css') }}">
+        <title>optaradio</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    <footer>
+        <p>optaradio | repo: <a href="https://github.com/p4cx/optaradio">p4cx/optaradio</a>
+        </p>
+    </footer>
+    </body>
+</html>

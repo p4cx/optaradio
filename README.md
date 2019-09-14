@@ -1,4 +1,4 @@
-![# optaradio](./radio_plash.png)   
+![# optaradio](./web/static/radio_plash.png)   
    
 ---
 

@@ -32,12 +32,15 @@ def get_song(url):
     if HOST_UP:
         request = urllib2.Request(url, headers={'Icy-MetaData': 1})
         response = urllib2.urlopen(request)
+        print(response.info())
         meta_int = int(response.headers['icy-metaint'])
         output = ''
         response.read(meta_int)
+        print(struct.unpack('B', response.read(1))[0])
         metadata_length = struct.unpack('B', response.read(1))[0] * 16
         metadata = response.read(metadata_length).rstrip(b'\0')
-        m = re.search(br"StreamTitle='([^']*)';", metadata)
+        print(metadata)
+        m = re.search(br"treamTitle='([^']*)';", metadata)
         if m:
             title = m.group(1)
             if title:

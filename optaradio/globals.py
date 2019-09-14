@@ -16,6 +16,3 @@ UNICODE_FLAG_FILE = RES_PATH + 'emoji-test.txt'  # https://unicode.org/Public/em
 UNICODE_FLAG_LIST = RES_PATH + 'flag.csv'
 FONT_REGULAR_PATH = RES_PATH + 'SourceSansPro-Regular.ttf'
 FONT_SEMIBOLD_PATH = RES_PATH + 'SourceSansPro-Semibold.ttf'
-WEATHER_API_URL = 'https://samples.openweathermap.org/data/2.5/weather?q=London,uk&' \
-                  'appid=b6907d289e10d714a6e88b30761fae22'
-#  valid link to api by openweathermap.org
