@@ -1,31 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <form>
-                <fieldset>
-                    <legend>Login form</legend>
-                    <div class="input-group fluid">
-                        <label for="username" style="width: 80px;">Username</label>
-                        <input type="email" value="" id="username" placeholder="username">
-                    </div>
-                    <div class="input-group fluid">
-                          <label for="pwd" style="width: 80px;">Password</label>
-                          <input type="password" value="" id="pwd" placeholder="password">
-                    </div>
-                    <div class="input-group fluid">
-                          <button class="primary">Login</button>
-                          <button>Forgot password?</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="col-sm-1"></div>
-      </div>
-</div>
+<form action="{{ url_for('handle_data') }}" enctype="multipart/form-data" method="post">
+    <fieldset>
+        <legend>Add new station</legend>
+            <div class="row responsive-label spacer-20">
+                <div class="col-sm-12 col-md-3">{{ form.station_name.label }}</div>
+                <div class="col-sm-12 col-md">{{ form.station_name }}</div>
+            </div>
+            <div class="row responsive-label spacer-20">
+                <div class="col-sm-12 col-md-3">{{ form.station_url.label }}</div>
+                <div class="col-sm-12 col-md">{{ form.station_url }}</div>
+            </div>
+            <div class="row responsive-label spacer-20">
+                <div class="col-sm-12 col-md-3">{{ form.station_description.label }}</div>
+                <div class="col-sm-12 col-md">{{ form.station_description }}</div>
+            </div>
+            <div class="row responsive-label spacer-20">
+                <div class="col-sm-12 col-md-3 tooltip" aria-label="Only a *.png file.">{{ form.station_cover.label }}</div>
+                <div class="col-sm-12 col-md upload_wrapper">
+                    <button class="secondary button_fix">Upload cover{{ form.station_cover }}</button>
+                </div>
+            </div>
+            <div class="row responsive-label spacer-20">
+                <div class="col-sm-12 col-md-3 tooltip" aria-label="If no country is known, then just type in 'Rainbow'.">{{ form.station_country.label }}</div>
+                <div class="col-sm-12 col-md">
+                    {{form.station_country(list="country_list")}}
+                    <datalist id="country_list">
+                    {% for country in countries %}
+                        <option value="{{ country }}">
+                    {% endfor %}
+                    </datalist>
+                </div>
+            </div>
+            <div class="row responsive-label">
+                <div class="col-sm-6 col-md-9"></div>
+                <div class="col-sm-6 col-md-3">{{ form.submit(class="tertiary large") }}</div>
+            </div>
+    </fieldset>
+</form>
 
 {% endblock %}
 

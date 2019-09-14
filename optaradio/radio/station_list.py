@@ -1,6 +1,6 @@
 import csv
 
-from globals import *
+from optaradio.globals import *
 
 
 # structure of the csv-file

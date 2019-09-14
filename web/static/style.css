@@ -11,8 +11,80 @@ html, * {
     font-weight: 400;
 }
 
+body {
+    background-color: #000;
+}
+
+.base {
+    margin-top: 30px;
+}
+
 footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.logo_image {
+    margin: 0 10px;
+    position: relative;
+    top: 7px;
+}
+
+.button.nav {
+    margin-right: 10px;
+    background-color: #222;
+    border-left: .0625rem solid var(--form-border-color);
+    border-right: .0625rem solid var(--form-border-color);
+}
+
+.button.nav:hover {
+    background-color: #373737;
+    border-left: .0625rem solid var(--form-border-color);
+    border-right: .0625rem solid var(--form-border-color);
+}
+
+input {
+    width: 90%
+}
+
+.responsive-label {
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+ .responsive-label .col-md-3 {
+  text-align:right
+ }
+}
+
+.select_fix {
+    width: 90%;
+}
+
+.button_fix {
+    margin: 4px !important;
+}
+
+.upload_wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.upload_wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.spacer-20 {
+    margin-bottom: 20px;
+}
+
+.report_message {
+    display: inline-block;
+    margin: 0 0 0 20px;
 }
