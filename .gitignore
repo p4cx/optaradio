@@ -1,4 +1,5 @@
 .idea/*
+.web/temp/*
 __pycache__
 radio_thumbs
 *.csv
