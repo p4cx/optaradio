@@ -2,8 +2,8 @@ import time as t
 
 import pygame as pg
 
-from globals import *
-from radio import weather
+from optaradio.globals import *
+from optaradio.radio import weather
 
 
 def run(window):

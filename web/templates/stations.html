@@ -27,4 +27,13 @@
     </div>
 </div>
 {% endfor %}
+{% if station_list|length == 0 %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card fluid">
+            <div class="section"><mark class="inline-block secondary">Oups!</mark><span class="report_message">Maybe you should add some radio stations.</span></div>
+        </div>
+    </div>
+</div>
+{% endif %}
 {% endblock %}

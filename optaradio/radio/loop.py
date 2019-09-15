@@ -1,7 +1,7 @@
 import pygame as pg
 
-from radio import main
-from ui.input import keyboard
+from optaradio.radio import main
+from optaradio.ui.input import keyboard
 
 
 def run_loop(window, state):

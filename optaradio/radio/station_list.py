@@ -33,4 +33,7 @@ def get_station_list():
 
 
 def sort_station_list(station_list):
-    return sorted(station_list, key=lambda x: x[1])
+    if len(station_list) > 1:
+        return sorted(station_list, key=lambda x: x[1])
+    else:
+        return station_list

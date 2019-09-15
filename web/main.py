@@ -49,7 +49,6 @@ def download_file(filename):
 @app.route("/stations")
 def stations():
     station_list = getStations.get()
-    print(station_list[0])
     return render_template('stations.html', station_list=getStations.get())
 
 

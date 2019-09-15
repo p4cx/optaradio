@@ -56,5 +56,13 @@ def create_cover_image(name, cover_path):
 
 
 def write_to_csv(name, url, description, file, country):
-    #id = len(csv.reader(open(RADIO_STATION_CSV_PATH, newline='', encoding='utf-8'), delimiter=';'))
-    print("test")
+    reader = csv.reader(open(RADIO_STATION_CSV_PATH, newline='', encoding='utf-8'), delimiter=';')
+    station_list = []
+    for row in reader:
+        station_list.append(row)
+    id = len(station_list) + 1
+    row = [id, name, url, description, file, country]
+    with open(RADIO_STATION_CSV_PATH, 'a') as csvFile:
+        writer = csv.writer(csvFile, delimiter=';')
+        writer.writerow(row)
+    csvFile.close()
