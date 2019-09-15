@@ -6,6 +6,10 @@
          url('SourceSansPro-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
+html {
+    height: 100%;
+}
+
 html, * {
     font-family: sourcesanspro, sans-serif !important;
     font-weight: 400;
@@ -13,16 +17,24 @@ html, * {
 
 body {
     background-color: #000;
+    height: 100%;
+}
+
+.frame {
+    min-height: 100%;
+    position: relative;
 }
 
 .base {
     margin-top: 30px;
+    padding-bottom: 100px;
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
+    padding: calc(2 * var(--universal-padding)) 0;
 }
 
 .logo_image {
@@ -48,7 +60,7 @@ input {
     width: 90%
 }
 
-.responsive-label {
+.label_center {
     align-items: center;
 }
 
@@ -87,4 +99,10 @@ input {
 .report_message {
     display: inline-block;
     margin: 0 0 0 20px;
+}
+
+.header_image {
+    margin: 0 auto 20px auto;
+    width: 1024px;
+    display: block;
 }

@@ -1,31 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-    </div>
-    <!-- Adding some flex properties to center the form and some height to the page, these can be omitted -->
-    <div class="col-sm-12 col-md-8 col-lg-6" style="height: calc(100vh - 10.25rem); display: flex; align-items: center; flex: 0 1 auto;">
-      <form>
-        <fieldset>
-          <legend>Login form</legend>
-            <div class="input-group fluid">
-              <label for="username" style="width: 80px;">Username</label>
-              <input type="email" value="" id="username" placeholder="username">
+{% for station in station_list %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card fluid">
+            <div class="section">
+                <img class="header_image" src="/image/{{ station[4] }}" alt="header"/>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Station name</div>
+                    <div class="col-sm-12 col-md">{{ station[1] }}</div>
+                </div>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Stream url</div>
+                    <div class="col-sm-12 col-md"><a href="{{ station[2] }}" target="_blank">{{ station[2] }}</a></div>
+                </div>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Description</div>
+                    <div class="col-sm-12 col-md">{{ station[3] }}</div>
+                </div>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Country</div>
+                    <div class="col-sm-12 col-md">{{ station[5] }}</div>
+                </div>
             </div>
-            <div class="input-group fluid">
-              <label for="pwd" style="width: 80px;">Password</label>
-              <input type="password" value="" id="pwd" placeholder="password">
-            </div>
-            <div class="input-group fluid">
-              <button class="primary">Login</button>
-              <button>Forgot password?</button>
-            </div>
-        </fieldset>
-      </form>
+        </div>
     </div>
-    <div class="col-sm">
-    </div>
-  </div>
 </div>
+{% endfor %}
 {% endblock %}

@@ -1,13 +1,65 @@
 {% extends "base.html" %}
 {% block content %}
-
 <div class="row">
     <div class="col-sm-12">
         <div class="card fluid">
-            <div class="section">{% if success %}<mark class="inline-block tertiary">Nice!</mark>{% else %}<mark class="inline-block secondary">Try again!</mark>{% endif %}<span class="report_message">{{ message }}</span></div>
+            <div class="section">{% if success %}<mark class="inline-block tertiary">Success!</mark>{% else %}<mark class="inline-block secondary">Error!</mark>{% endif %}<span class="report_message">{{ message }}</span></div>
         </div>
     </div>
 </div>
+
+{% if not success %}
+<script>
+    var time = 0;
+    let timerId = setInterval(() => update(), 30);
+
+    function update() {
+        var element = document.getElementById("pgbar");
+        element.setAttribute("value", time);
+        time += 30
+    }
+
+    setTimeout(() => { clearInterval(timerId); window.location.href = "/"; }, 5000);
+</script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card fluid">
+            <div class="section">
+                <progress id="pgbar" value="0" max="4500" class="secondary"></progress>
+                <span class="report_message">You will be redirected to the station form soon.</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if station|length > 0 %}
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card fluid">
+            <div class="section">
+                <img class="header_image" src="{{ station[3] }}" alt="header"/>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Station name</div>
+                    <div class="col-sm-12 col-md">{{ station[0] }}</div>
+                </div>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Stream url</div>
+                    <div class="col-sm-12 col-md">{{ station[1] }}</div>
+                </div>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Description</div>
+                    <div class="col-sm-12 col-md">{{ station[2] }}</div>
+                </div>
+                <div class="row responsive-label spacer-20">
+                    <div class="col-sm-12 col-md-3">Country</div>
+                    <div class="col-sm-12 col-md">{{ station[4] }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
 
 {% endblock %}
 

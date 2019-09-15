@@ -1,6 +1,7 @@
 import csv
 from optaradio.globals import *
 from web.globals import *
+from web.app import getStations
 from PIL import Image, ImageFilter
 
 try:
@@ -9,21 +10,30 @@ except ImportError:
     import urllib.request as urllib2
 
 
-def add_station(entry, cover_path):
+def add(entry, cover_path):
     print(entry['station_name'])
     print(entry['station_url'])
     print(entry['station_description'])
     print(entry['station_country'])
 
+    station_list = getStations.get()
+
+    for station in station_list:
+        if station[1] == entry['station_name']:
+            return False, "Your choosen name is already taken.", []
+
     try:
         code = urllib2.urlopen(entry['station_url']).getcode()
         print(code)
         if not (str(code).startswith('2') or str(code).startswith('3')):
-            return False, "Your url is not valid."
+            return False, "Your url is not valid.", []
     except:
-        return False, "Your url is not reachable."
+        return False, "Your url is not reachable.", []
 
-    create_cover_image(entry['station_name'], cover_path)
+    path, image_file = create_cover_image(entry['station_name'], cover_path)
+    write_to_csv(entry['station_name'], entry['station_url'], entry['station_description'], image_file, entry['station_country'])
+
+    return True, "Added " + entry['station_name'] + " to your station list.", [entry['station_name'], entry['station_url'], entry['station_description'], path, entry['station_country']]
 
 
 def create_cover_image(name, cover_path):
@@ -39,17 +49,12 @@ def create_cover_image(name, cover_path):
     background_blur = background_resize.filter(ImageFilter.GaussianBlur(75))
     background = Image.alpha_composite(background_blur, blur_layer)
     background.paste(cover_resize, (312, 50))
-    path = THUMBS_PATH + name + ".png"
+    file = name + ".png"
+    path = THUMBS_PATH + file
     background.save(path)
-    print(path)
+    return "/image/" + file, file
 
 
-
-    #len(csv.reader(open(RADIO_STATION_CSV_PATH, newline='', encoding='utf-8'), delimiter=';'))
-
-
-
-
-
-
-    return True, "Yeah, alles gut"
+def write_to_csv(name, url, description, file, country):
+    #id = len(csv.reader(open(RADIO_STATION_CSV_PATH, newline='', encoding='utf-8'), delimiter=';'))
+    print("test")
