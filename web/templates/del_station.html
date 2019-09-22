@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+{% if station|length > 0 %}
+<div class="row" xmlns="http://www.w3.org/1999/html">
+
+    <div class="col-sm-12">
+        <div class="card fluid">
+            <div class="section">
+                <img class="header_image" src="/image/{{ station[4] }}" alt="header"/>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-4 col-lg-5">
+                            <a href="/"><button class="del_radio_station_final large tertiary">Back to Station overview</button></a>
+                    </div>
+                    <div class="col-sm-12 col-md-8 col-lg-7">
+                        <form action="/del_station" method="post">
+                            <input class="del_radio_station_final large secondary" type="submit"
+                               name="{{ station[1] }}" value="Delete {{ station[1] }} irretrievably!"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Station name</div>
+                    <div class="col-sm-12 col-md">{{ station[1] }}</div>
+                </div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Stream url</div>
+                    <div class="col-sm-12 col-md"><a href="{{ station[2] }}" target="_blank">{{ station[2] }}</a></div>
+                </div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Description</div>
+                    <div class="col-sm-12 col-md">{{ station[3] }}</div>
+                </div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Country</div>
+                    <div class="col-sm-12 col-md">{{ station[5] }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+

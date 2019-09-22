@@ -22,6 +22,7 @@ def change_station(url):
         stream.get_mrl()
         vlc_player.set_media(stream)
         vlc_player.play()
+        print(vlc_player.get_media().get_meta(vlc.Meta.NowPlaying))
 
 
 def stop():
@@ -30,32 +31,20 @@ def stop():
 
 def get_song(url):
     if HOST_UP:
-        request = urllib2.Request(url, headers={'Icy-MetaData': 1})
+        encoding = 'latin1'  # default: iso-8859-1 for mp3 and utf-8 for ogg streams
+        request = urllib2.Request(url, headers={'Icy-MetaData': 1})  # request metadata
         response = urllib2.urlopen(request)
-        print(response.info())
-        meta_int = int(response.headers['icy-metaint'])
-        output = ''
-        response.read(meta_int)
-        print(struct.unpack('B', response.read(1))[0])
-        metadata_length = struct.unpack('B', response.read(1))[0] * 16
-        metadata = response.read(metadata_length).rstrip(b'\0')
-        print(metadata)
-        m = re.search(br"treamTitle='([^']*)';", metadata)
-        if m:
-            title = m.group(1)
-            if title:
-                search = '\''
-                song = str(title)
-                pos_a = song.find(search)
-                check = True
-                if pos_a == -1:
-                    check = False
-                pos_b = song.rfind(search)
-                if pos_b == -1:
-                    check = False
-                adjusted_pos_a = pos_a + 1
-                if adjusted_pos_a >= pos_b:
-                    check = False
-                if check:
-                    output = str(song[adjusted_pos_a:pos_b])
-        return output
+        metaint = int(response.headers['icy-metaint'])
+        title = ""
+        for _ in range(10):  # # title may be empty initially, try several times
+            response.read(metaint)  # skip to metadata
+            metadata_length = struct.unpack('B', response.read(1))[0] * 16  # length byte
+            metadata = response.read(metadata_length).rstrip(b'\0')
+            # extract title from the metadata
+            m = re.search(br"StreamTitle='([^']*)';", metadata)
+            if m:
+                title = m.group(1)
+                if title:
+                    title = title.decode(encoding, errors='replace')
+                    break
+        return str(title)

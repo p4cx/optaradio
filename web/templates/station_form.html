@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+{% if form.station_name.data %}<form action="{{ url_for('mod_station', old_station=form.station_name.data) }}" enctype="multipart/form-data" method="post">{% else %}<form action="{{ url_for('add_station') }}" enctype="multipart/form-data" method="post">{% endif %}
+    <fieldset>
+        <legend>{% if form.station_name.data %}Modify {{ form.station_name.data }}{% else %}Add new station{% endif %}</legend>
+            <div class="row responsive-label label_center spacer_20">
+                <div class="col-sm-12 col-md-3 row_title">{{ form.station_name.label }}</div>
+                <div class="col-sm-12 col-md">{{ form.station_name }}</div>
+            </div>
+            <div class="row responsive-label label_center spacer_20">
+                <div class="col-sm-12 col-md-3 row_title">{{ form.station_url.label }}</div>
+                <div class="col-sm-12 col-md">{{ form.station_url }}</div>
+            </div>
+            <div class="row responsive-label label_center spacer_20">
+                <div class="col-sm-12 col-md-3 row_title">{{ form.station_desc.label }}</div>
+                <div class="col-sm-12 col-md">{{ form.station_desc }}</div>
+            </div>
+            <div class="row responsive-label label_center spacer_20">
+                <div class="col-sm-12 col-md-3 tooltip row_title" aria-label="Only a *.png file.">{{ form.station_cover.label }}</div>
+                <div class="col-sm-12 col-md">
+                    <div class="upload_wrapper">
+                        <button class="secondary button_fix" type="button">{{ form.station_cover }}Upload cover</button>
+                    </div>
+                    {% if form.station_name.data %}
+                    <figure>
+                        <img src="/image/{{ form.station_name.data }}.png"/>
+                        <figcaption>This is the actual radio header - if you wan't to change this, upload a normal cover image.</figcaption>
+                    </figure>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row responsive-label label_center spacer_20">
+                <div class="col-sm-12 col-md-3 tooltip row_title" aria-label="If no country is known, then just type in 'Rainbow'.">{{ form.station_country.label }}</div>
+                <div class="col-sm-12 col-md">
+                    {{form.station_country(list="country_list")}}
+                    <datalist id="country_list">
+                    {% for country in countries %}
+                        <option value="{{ country }}">
+                    {% endfor %}
+                    </datalist>
+                </div>
+            </div>
+            <div class="row responsive-label label_center">
+                <div class="col-sm-6 col-md-3"><a href="/" type="link"><button class="secondary large" type="button">Back</button></a></div>
+                <div class="col-sm-0 col-md-6"></div>
+                <div class="col-sm-6 col-md-3">
+                    {% if form.station_name.data %}{{ form.submit(class="tertiary large add_station_submit", value="Modify station") }}{% else %}{{ form.submit(class="tertiary large add_station_submit") }}{% endif %}
+                </div>
+            </div>
+    </fieldset>
+</form>
+
+{% endblock %}

@@ -33,26 +33,36 @@
 </div>
 {% endif %}
 
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card fluid">
+            <div class="section">
+                <a href="/"><button class="large">Back to Station Overview.</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% if station|length > 0 %}
 <div class="row">
     <div class="col-sm-12">
         <div class="card fluid">
             <div class="section">
-                <img class="header_image" src="{{ station[3] }}" alt="header"/>
-                <div class="row responsive-label spacer-20">
-                    <div class="col-sm-12 col-md-3">Station name</div>
+                <img class="header_image" src="/image/{{ station[3] }}" alt="header"/>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Station name</div>
                     <div class="col-sm-12 col-md">{{ station[0] }}</div>
                 </div>
-                <div class="row responsive-label spacer-20">
-                    <div class="col-sm-12 col-md-3">Stream url</div>
-                    <div class="col-sm-12 col-md">{{ station[1] }}</div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Stream url</div>
+                    <div class="col-sm-12 col-md"><a href="{{ station[1] }}">{{ station[1] }}</a></div>
                 </div>
-                <div class="row responsive-label spacer-20">
-                    <div class="col-sm-12 col-md-3">Description</div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Description</div>
                     <div class="col-sm-12 col-md">{{ station[2] }}</div>
                 </div>
-                <div class="row responsive-label spacer-20">
-                    <div class="col-sm-12 col-md-3">Country</div>
+                <div class="row responsive-label spacer_20">
+                    <div class="col-sm-12 col-md-3 row_title">Country</div>
                     <div class="col-sm-12 col-md">{{ station[4] }}</div>
                 </div>
             </div>

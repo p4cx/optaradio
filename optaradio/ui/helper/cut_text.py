@@ -33,6 +33,19 @@ def wrap_line(text, font, max_width):
     return wrapped
 
 
+def get_song_title(text, font, max_width):
+    if len(list(chain(*(wrap_line(l, font, max_width) for l in text.splitlines())))) > 1:
+        song_title = text.split(" - ")
+        print(song_title)
+        song_title_list = []
+        for line in song_title:
+            lines = chain(*(wrap_line(l, font, max_width) for l in line.splitlines()))
+            song_title_list.extend(list(lines))
+        return song_title_list
+    else:
+        return [text]
+
+
 def get_multi_line(text, font, max_width):
     lines = chain(*(wrap_line(line, font, max_width) for line in text.splitlines()))
     return list(lines)

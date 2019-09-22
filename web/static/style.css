@@ -20,6 +20,15 @@ body {
     height: 100%;
 }
 
+form {
+    background: none;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+
 .frame {
     min-height: 100%;
     position: relative;
@@ -57,17 +66,15 @@ footer {
 }
 
 input {
-    width: 90%
+    width: 100%
+}
+
+fieldset {
+    padding: 10px 30px 10px 10px;
 }
 
 .label_center {
     align-items: center;
-}
-
-@media (min-width: 768px) {
- .responsive-label .col-md-3 {
-  text-align:right
- }
 }
 
 .select_fix {
@@ -92,8 +99,13 @@ input {
   opacity: 0;
 }
 
-.spacer-20 {
+.spacer_20 {
     margin-bottom: 20px;
+}
+
+.row_title {
+    text-align: right;
+    padding: 0 20px 0 0;
 }
 
 .report_message {
@@ -105,4 +117,57 @@ input {
     margin: 0 auto 20px auto;
     width: 1024px;
     display: block;
+}
+
+.del_radio_station {
+    background-image: url("./del_normal.png");
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    transition: none;
+    color: transparent;
+    font-size: 0;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.del_radio_station:hover {
+    background-image: url("./del_hover.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+
+.mod_radio_station {
+    background-image: url("./mod_normal.png");
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    transition: none;
+    color: transparent;
+    font-size: 0;
+    position: absolute;
+    top: 5px;
+    right: 45px;
+}
+
+.mod_radio_station:hover {
+    background-image: url("./mod_hover.png");
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.add_station_button {
+    background-image: url("./add_normal.png");
+    height: 72px;
+    width: 72px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+.add_station_button:hover {
+    background-image: url("./add_hover.png");
 }
