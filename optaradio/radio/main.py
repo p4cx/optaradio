@@ -2,7 +2,7 @@ import pygame as pg
 
 from optaradio.globals import *
 from optaradio.radio import actual_state, station_list, player, loop
-from optaradio.ui import start_ui, menu_ui, play_ui, setting_ui
+from optaradio.ui import start_ui, menu_ui, play_ui
 from optaradio.ui.helper import cut_text, decode_flag_to_csv
 
 
@@ -48,7 +48,7 @@ def change_ui(window, state, ui_type):
         state.actual_ui = "play_ui"
         play_ui.run(window, state)
     elif ui_type is "setting_ui":
-        setting_ui.SettingUI(window, state)
+        state.actual_ui = "setting_ui"
     if ui_type is not "play_ui":
         state.actual_playing_song = ""
 
