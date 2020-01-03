@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/pi
+cd /home/pi/optaradio/
 
 # remove old font files, mini.css and emoji-test-txt
 rm -f ./optaradio/res/SourceSansPro-Regular.ttf ./optaradio/res/SourceSansPro-Semibold.ttf ./web/static/SourceSansPro-Regular.ttf ./web/static/SourceSansPro-Semibold.ttf ./web/static/SourceSansPro-Regular.woff ./web/static/SourceSansPro-Semibold.woff ./web/static/mini.css ./optaradio/res/flags/*
@@ -22,9 +22,9 @@ wget https://raw.githubusercontent.com/Chalarangelo/mini.css/master/dist/mini-da
 
 # clone flag emojis for radio interface, copy them to right dir and delete openmoji repo
 git clone --dept 1 https://github.com/hfg-gmuend/openmoji.git
-cp -v ./openmoji/color/72x72/1F1* ./optaradio/optaradio/res/flags/
-cp -v ./openmoji/color/72x72/1F3F3-* ./optaradio/optaradio/res/flags/rainbow.png
+cp -v ./openmoji/color/72x72/1F1* ./optaradio/res/flags/
+cp -v ./openmoji/color/72x72/1F3F3-* ./optaradio/res/flags/rainbow.png
 rm -rf ./openmoji
 
 # resize flag size
-mogrify -resize 50x50 ./optaradio/optaradio/res/flags/*.png
+mogrify -resize 50x50 ./optaradio/res/flags/*.png
