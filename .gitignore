@@ -1,5 +1,6 @@
 .idea/*
 web/temp/*
+optaradio/res/flags/*
 __pycache__
 radio_thumbs
 *.csv
