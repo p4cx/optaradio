@@ -1,7 +1,5 @@
-import os
 import csv
-from optaradio.globals import *
-from web.globals import *
+from globals import *
 from PIL import Image, ImageFilter
 
 try:

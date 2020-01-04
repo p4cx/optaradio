@@ -1,4 +1,4 @@
-from web.globals import *
+from globals import *
 import csv
 
 

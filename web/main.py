@@ -1,8 +1,7 @@
 from flask import *
-from web.globals import *
-from optaradio.globals import *
-from web.app.forms import *
-from web.app import helpers, station_model
+from globals import *
+from app.forms import *
+from app import helpers, station_model
 from werkzeug.utils import secure_filename
 import os
 
