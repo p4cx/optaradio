@@ -1,7 +1,7 @@
 import json
 import urllib.request
 
-from private import *
+from weather_url import *
 from globals import *
 
 
