@@ -3,7 +3,7 @@ import pygame as pg
 from optaradio.globals import *
 from optaradio.radio import actual_state, station_list, player, loop
 from optaradio.ui import start_ui, menu_ui, play_ui
-from optaradio.ui.helper import cut_text, decode_flag_to_csv
+from optaradio.ui.helper import cut_text
 
 
 def run():
@@ -14,8 +14,6 @@ def run():
     window.fill([0, 0, 0])
 
     pg.font.init()
-
-    decode_flag_to_csv.save_unicode_csv()
 
     clock = pg.time.Clock()
     clock.tick(60)
