@@ -1,3 +1,5 @@
+import os
+
 import pygame as pg
 
 from optaradio.radio import main
@@ -8,6 +10,13 @@ def run_loop(window, state):
     old_ticks = 0
     tick_count = 1
     ground_tick = 500  # 0.5s update heart beat
+
+    print(os.uname())
+
+    from optaradio.ui.input import gpio
+
+    #gpio.setup(window, state)
+    #gpio.check_gpio_events(window, state)
 
     while True:
         keyboard.check_keyboard_events(window, state)
@@ -31,3 +40,4 @@ def run_loop(window, state):
                     main.update_ui(window, state, "")
 
         pg.time.wait(0)
+
