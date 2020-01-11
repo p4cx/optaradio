@@ -14,7 +14,7 @@ ROTARY_BUTTON = 13
 
 ROTARY_DIR = True
 ROTARY_COUNT = 0
-ROTARY_CLK_LAST = GPIO.input(ROTARY_CLK)
+ROTARY_CLK_LAST = 0
 ROTARY_CLK_ACTUAL = 0
 ROTARY_DELAY = 0.005
 
@@ -25,9 +25,11 @@ SETTING_BUTTON_3 = 4
 
 
 def setup(window, state):
+    global ROTARY_CLK_LAST
     GPIO.setup(ROTARY_CLK, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ROTARY_DT, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ROTARY_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    ROTARY_CLK_LAST = GPIO.input(ROTARY_CLK)
     GPIO.add_event_detect(ROTARY_CLK, GPIO.BOTH, callback=rotary_change(window, state), bouncetime=50)
     GPIO.add_event_detect(ROTARY_BUTTON, GPIO.FALLING, callback=control.central_button(window, state), bouncetime=1000)
 
