@@ -36,7 +36,7 @@ def setup(window, state):
     GPIO.setup(SETTING_BUTTON_1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(SETTING_BUTTON_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(SETTING_BUTTON_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.RISING, callback=control.scroll_menu_up(window, state))
+    GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.RISING, callback=lambda w, x: control.scroll_menu_up(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_2, GPIO.RISING, callback=control.scroll_menu_down(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_3, GPIO.RISING, callback=close())
 
