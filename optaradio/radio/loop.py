@@ -14,9 +14,7 @@ def run_loop(window, state):
     print(os.uname())
 
     from optaradio.ui.input import gpio
-
-    #gpio.setup(window, state)
-    #gpio.check_gpio_events(window, state)
+    gpio.setup(window, state)
 
     while True:
         keyboard.check_keyboard_events(window, state)
