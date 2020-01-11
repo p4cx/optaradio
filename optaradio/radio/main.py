@@ -11,7 +11,7 @@ def run():
     pg.display.set_caption('optaradio')
     pg.display.set_icon(pg.image.load(APP_ICON))
     window = pg.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-    window.fill([0, 0, 0])
+    window.fill([30, 30, 230])
 
     pg.font.init()
 

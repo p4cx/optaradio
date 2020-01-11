@@ -11,10 +11,9 @@ def run_loop(window, state):
     tick_count = 1
     ground_tick = 500  # 0.5s update heart beat
 
-    print(os.uname())
-
-    from optaradio.ui.input import gpio
-    gpio.setup(window, state)
+    if "Darwin" not in str(os.uname()):
+        from optaradio.ui.input import gpio
+        gpio.setup(window, state)
 
     while True:
         keyboard.check_keyboard_events(window, state)
