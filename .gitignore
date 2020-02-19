@@ -1,6 +1,7 @@
 .idea/*
 web/temp/*
 optaradio/res/flags/*
+optaradio/res/radio.csv
 __pycache__
 radio_thumbs
 *.ttf
