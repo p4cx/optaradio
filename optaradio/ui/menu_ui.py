@@ -2,6 +2,7 @@ import pygame as pg
 
 from globals import *
 from ui.helper import cut_text
+from ui import bar
 
 
 def run(window, state):
@@ -12,7 +13,7 @@ def run(window, state):
 
             font = pg.font.Font(FONT_SEMIBOLD_PATH, 75)
             station_text = font.render(station_[1].upper(), True, WHITE)
-            window.blit(station_text, (130, 250))
+            window.blit(station_text, (150, 250))
         else:
             font = pg.font.Font(FONT_SEMIBOLD_PATH, 75)
             station_text = font.render(station_[1].upper(), True, WHITE)
@@ -82,5 +83,8 @@ def run(window, state):
 
     for num, station in enumerate(menu_up, start=1):
         unselected_entry(station, -num, selected_description_length)
+
+    if state.setting_data['show_buttons']['status'] == "on":
+        bar.add_bar(window, state)
 
     pg.display.flip()

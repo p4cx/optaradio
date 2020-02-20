@@ -1,12 +1,14 @@
 import pygame as pg
 
 from optaradio.globals import *
-from optaradio.ui.helper import cut_text
+from optaradio.ui import bar
 
 
 def run(window, state):
     window.fill(BLACK)
     station_cover(window, state)
+    if state.setting_data['show_buttons']['status'] == "on":
+        bar.add_bar(window, state)
     pg.display.flip()
     actual_station_song(window, state)
 

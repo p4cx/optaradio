@@ -1,0 +1,1 @@
+{"led": {"title": "LED", "description": "Turn music visualisation with LEDs on or off. ", "status": "on", "mode": "0"}, "audio": {"title": "AUDIO", "description": "Switch audio between silent and loud. ", "status": "on"}, "show_buttons": {"title": "BUTTON BAR", "description": "Show button bar with BACK, AUDIO, LED and SETTING in the top right corner. ", "status": "on"}}

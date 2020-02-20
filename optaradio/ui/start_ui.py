@@ -4,10 +4,13 @@ import pygame as pg
 
 from optaradio.globals import *
 from optaradio.radio import weather
+from optaradio.ui import bar
 
 
-def run(window):
+def run(window, state):
     window.fill(BLACK)
+    if state.setting_data['show_buttons']['status'] == "on":
+        bar.add_bar(window, state)
     pg.display.flip()
     add_time(window)
     add_weather(window)

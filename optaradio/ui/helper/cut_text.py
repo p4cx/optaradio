@@ -28,7 +28,7 @@ def wrap_line(text, font, max_width):
 
     while not done:
         nl, done, s_text = trunc_line(text, font, max_width)
-        wrapped.append(s_text.strip())
+        wrapped.append(s_text.strip() + ' ')
         text = text[nl:]
     return wrapped
 

@@ -12,14 +12,24 @@ def central_button(window, state):
     elif state.actual_ui is "play_ui":
         main.stop(state)
         main.change_ui(window, state, "menu_ui")
+    elif state.actual_ui is "setting_ui":
+        main.switch_setting(state)
+        main.change_ui(window, state, "setting_ui")
 
 
-def clean_radio(window, state):
-    main.stop(state)
+def back(window, state):
     if state.actual_ui is "menu_ui":
-        main.change_ui(window, state, "start_ui")
-    else:
+        if state.play_radio_station is -1:
+            main.change_ui(window, state, "start_ui")
+        else:
+            main.stop(state)
+    elif state.actual_ui is "setting_ui":
         main.change_ui(window, state, "menu_ui")
+    elif state.actual_ui is "play_ui":
+        main.stop(state)
+        main.change_ui(window, state, "menu_ui")
+    else:
+        main.change_ui(window, state, "start_ui")
 
 
 def scroll_menu_up(window, state):
@@ -54,3 +64,11 @@ def play_favourite(window, state, favourite_number):
     state.play_radio_station = favourite_number
     main.play(state)
     main.change_ui(window, state, "play_ui")
+
+
+def switch_led(window, state):
+    main.set_led(window, state)
+
+
+def switch_audio(window, state):
+    main.set_audio(window, state)

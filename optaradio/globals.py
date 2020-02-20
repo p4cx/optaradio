@@ -10,6 +10,7 @@ WEATHER_UPDATE_INTERVAL = 60000
 TIME_UPDATE_INTERVAL = 1000
 SONG_UPDATE_INTERVAL = 2500
 RES_PATH = os.getcwd() + '/optaradio/res/'
+SETTINGS_PATH = RES_PATH + 'settings.json'
 THUMBS_PATH = RES_PATH + 'radio_thumbs/'
 APP_ICON = RES_PATH + 'icons/app_icon.png'
 RADIO_STATION_CSV_PATH = RES_PATH + 'radio.csv'

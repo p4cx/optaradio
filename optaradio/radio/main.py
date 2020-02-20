@@ -2,8 +2,8 @@ import pygame as pg
 
 from optaradio.globals import *
 from optaradio.radio import actual_state, station_list, player, loop
-from optaradio.ui import start_ui, menu_ui, play_ui
-from optaradio.ui.helper import cut_text
+from optaradio.ui import start_ui, menu_ui, play_ui, setting_ui
+from optaradio.ui.helper import cut_text, setting_handler
 
 
 def run():
@@ -22,8 +22,9 @@ def run():
     state.actual_ui = "start_ui"
 
     state.radio_stations = get_prepare_radio_stations()
+    state.setting_data = setting_handler.load_settings_data()
     state.selected_radio_station_menu_ui = 0
-    state.selected_radio_station_setting_ui = 0
+    state.selected_entry_setting_ui = 0
 
     state.play_radio_station = -1
     state.actual_playing_song = []
@@ -41,12 +42,13 @@ def change_ui(window, state, ui_type):
         menu_ui.run(window, state)
     elif ui_type is "start_ui":
         state.actual_ui = "start_ui"
-        start_ui.run(window)
+        start_ui.run(window, state)
     elif ui_type is "play_ui":
         state.actual_ui = "play_ui"
         play_ui.run(window, state)
     elif ui_type is "setting_ui":
         state.actual_ui = "setting_ui"
+        setting_ui.run(window, state)
     if ui_type is not "play_ui":
         state.actual_playing_song = ""
 
@@ -77,3 +79,17 @@ def get_prepare_radio_stations():
         station[3] = cut_text.get_multi_line(station[3], pg.font.Font(FONT_REGULAR_PATH, 25), WINDOW_WIDTH - 120)
 
     return radio_stations
+
+
+def set_led(window, state):
+    setting_handler.set_setting(state, 'led')
+    change_ui(window, state, state.actual_ui)
+
+
+def set_audio(window, state):
+    setting_handler.set_setting(state, 'audio')
+    change_ui(window, state, state.actual_ui)
+
+
+def switch_setting(state):
+    setting_handler.set_setting(state, state.selected_entry_setting_ui)

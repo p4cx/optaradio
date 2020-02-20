@@ -3,18 +3,19 @@ from optaradio.ui.helper import cut_text
 from optaradio.globals import *
 import pygame as pg
 
-class State:
 
+class State:
     def __init__(
             self,
             actual_ui,
             radio_stations,
             selected_radio_station_menu_ui,
-            selected_radio_station_setting_ui,
+            selected_entry_setting_ui,
             play_radio_station,
             actual_playing_song,
             actual_playing_song_raw,
-            actual_playing_song_count):
+            actual_playing_song_count,
+            setting_data):
 
         # main
         self.actual_ui = actual_ui
@@ -22,11 +23,15 @@ class State:
         # menu_ui
         self.radio_stations = radio_stations
         self.selected_radio_station_menu_ui = selected_radio_station_menu_ui
-        self.selected_radio_station_setting_ui = selected_radio_station_setting_ui
+        self.selected_entry_setting_ui = selected_entry_setting_ui
         self.play_radio_station = play_radio_station
         self.actual_playing_song = actual_playing_song
         self.actual_playing_song_count = actual_playing_song_count
         self.actual_playing_song_raw = actual_playing_song_raw
+
+        # settings
+        self.setting_data = setting_data
+        print(self.setting_data)
 
     def set_selected_radio_station(self, value, ui):
         if ui is "menu_ui":
@@ -37,12 +42,12 @@ class State:
             else:
                 self.selected_radio_station_menu_ui += value
         elif ui is "setting_ui":
-            if self.selected_radio_station_setting_ui is 0 and value is -1:
-                self.selected_radio_station_setting_ui = len(self.radio_stations) - 1
-            elif self.selected_radio_station_setting_ui is len(self.radio_stations) - 1 and value is 1:
-                self.selected_radio_station_setting_ui = 0
+            if self.selected_entry_setting_ui is 0 and value is -1:
+                self.selected_entry_setting_ui = len(list(self.setting_data.keys())) - 1
+            elif self.selected_entry_setting_ui is len(list(self.setting_data.keys())) - 1 and value is 1:
+                self.selected_entry_setting_ui = 0
             else:
-                self.selected_radio_station_setting_ui += value
+                self.selected_entry_setting_ui += value
 
     def set_actual_playing_song(self):
         song = player.get_song(self.radio_stations[self.play_radio_station][2])
@@ -56,3 +61,4 @@ class State:
                 return True
             else:
                 return False
+
