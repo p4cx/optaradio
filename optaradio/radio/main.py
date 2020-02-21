@@ -64,12 +64,16 @@ def update_ui(window, state, element):
 
 
 def play(state):
-    player.change_station(state.radio_stations[state.play_radio_station][2])
+    if not player.change_station(state.radio_stations[state.play_radio_station][2]):
+        stop(state)
+        return False
+    else:
+        return True
 
 
 def stop(state):
     player.stop()
-    state.actual_playing_song = ""
+    state.actual_playing_song = []
     state.play_radio_station = -1
 
 

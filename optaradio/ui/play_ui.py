@@ -14,20 +14,14 @@ def run(window, state):
 
 
 def actual_station_song(window, state):
-    update = state.set_actual_playing_song(state)
-    if update:
-        window.fill(BLACK)
-        font = pg.font.Font(FONT_REGULAR_PATH, 45)
-        if state.actual_playing_song_count is (len(state.actual_playing_song) - 1):
-            playing_song = state.actual_playing_song[0]
-            state.actual_playing_song_count = 0
-        else:
-            playing_song = state.actual_playing_song[state.actual_playing_song_count]
-            state.actual_playing_song_count += 1
-        station_text = font.render(playing_song, True, WHITE)
-        text_rect = station_text.get_rect(center=(WINDOW_WIDTH/2, 550))
-        window.blit(station_text, text_rect)
-        pg.display.update(pg.Rect((0, 500), (1000, 100)))
+    state.set_actual_playing_song(state)
+    window.fill(BLACK)
+    font = pg.font.Font(FONT_REGULAR_PATH, 45)
+    playing_song = state.actual_playing_song[state.actual_playing_song_count]
+    station_text = font.render(playing_song, True, WHITE)
+    text_rect = station_text.get_rect(center=(WINDOW_WIDTH/2, 550))
+    window.blit(station_text, text_rect)
+    pg.display.update(pg.Rect((0, 500), (1000, 100)))
 
 
 def station_cover(window, state):

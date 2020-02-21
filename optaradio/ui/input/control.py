@@ -7,8 +7,10 @@ def central_button(window, state):
     elif state.actual_ui is "menu_ui":
         if state.play_radio_station is not state.selected_radio_station_menu_ui:
             state.play_radio_station = state.selected_radio_station_menu_ui
-            main.play(state)
-        main.change_ui(window, state, "play_ui")
+            if main.play(state):
+                main.change_ui(window, state, "play_ui")
+            else:
+                main.change_ui(window, state, "menu_ui")
     elif state.actual_ui is "play_ui":
         main.stop(state)
         main.change_ui(window, state, "menu_ui")
@@ -62,8 +64,10 @@ def open_setting(window, state):
 def play_favourite(window, state, favourite_number):
     state.actual_ui = "play_ui"
     state.play_radio_station = favourite_number
-    main.play(state)
-    main.change_ui(window, state, "play_ui")
+    if main.play(state):
+        main.change_ui(window, state, "play_ui")
+    else:
+        main.change_ui(window, state, "menu_ui")
 
 
 def switch_led(window, state):

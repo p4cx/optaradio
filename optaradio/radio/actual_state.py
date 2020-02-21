@@ -31,7 +31,6 @@ class State:
 
         # settings
         self.setting_data = setting_data
-        print(self.setting_data)
 
     def set_selected_radio_station(self, value, ui):
         if ui is "menu_ui":
@@ -51,14 +50,18 @@ class State:
 
     def set_actual_playing_song(self):
         song = player.get_song(self.radio_stations[self.play_radio_station][2])
-        if song != self.actual_playing_song_raw:
-            self.actual_playing_song_raw = song
-            self.actual_playing_song = cut_text.get_song_title(song, pg.font.Font(FONT_REGULAR_PATH, 45), WINDOW_WIDTH - 50)
-            self.actual_playing_song_count = 0
-            return True
-        else:
-            if len(self.actual_playing_song) > 1:
-                return True
-            else:
-                return False
 
+        if song != self.actual_playing_song_raw and song != '':
+            self.actual_playing_song_raw = song
+            self.actual_playing_song = cut_text.get_song_title(
+                song, pg.font.Font(FONT_REGULAR_PATH, 45), WINDOW_WIDTH - 50)
+            self.actual_playing_song_count = 0
+        else:
+            if len(self.actual_playing_song) is 0:
+                self.actual_playing_song_raw = self.radio_stations[self.play_radio_station][1]
+                self.actual_playing_song = [self.actual_playing_song_raw]
+                self.actual_playing_song_count = 0
+            elif len(self.actual_playing_song) > (self.actual_playing_song_count + 1):
+                self.actual_playing_song_count += 1
+            else:
+                self.actual_playing_song_count = 0
