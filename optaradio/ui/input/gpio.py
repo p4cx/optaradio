@@ -39,7 +39,7 @@ def setup():
     GPIO.setup(ROTARY_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     GPIO.add_event_detect(ROTARY_CLK, GPIO.BOTH, bouncetime=50)
-    GPIO.add_event_detect(ROTARY_BUTTON, GPIO.FALLING, bouncetime=200)
+    GPIO.add_event_detect(ROTARY_BUTTON, GPIO.RISING, bouncetime=200)
 
     GPIO.setup(SETTING_BUTTON_1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(SETTING_BUTTON_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
