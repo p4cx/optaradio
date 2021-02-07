@@ -20,8 +20,9 @@ wget https://raw.githubusercontent.com/Chalarangelo/mini.css/534ae81268710951fc4
 
 # clone flag emojis for radio interface, copy them to right dir and delete openmoji repo
 git clone --dept 1 https://github.com/hfg-gmuend/openmoji.git
+mkdir ./optaradio/res/flags/
 cp -v ./openmoji/color/72x72/1F1* ./optaradio/res/flags/
-cp -v ./openmoji/color/72x72/1F3F3-* ./optaradio/res/flags/rainbow.png
+cp -v ./openmoji/color/72x72/1F3F3-FE0F-200D-1F308.png ./optaradio/res/flags/rainbow.png
 rm -rf ./openmoji
 
 # resize flag size
