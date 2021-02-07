@@ -18,13 +18,13 @@ def run_loop(window, state):
         gpio_available = False
 
     if gpio_available:
-        gpio.setup(window, state)
+        gpio.setup()
 
     while True:
         keyboard.check_keyboard_events(window, state)
 
         if gpio_available:
-            gpio.check_gpio_events()
+            gpio.check_gpio_events(window, state)
 
         actual_ticks = pg.time.get_ticks()
         delta_ticks = (actual_ticks - old_ticks)
