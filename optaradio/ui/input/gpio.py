@@ -28,9 +28,9 @@ def setup():
     GPIO.setup(ROTARY_DT, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ROTARY_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    GPIO.setup(SETTING_BUTTON_1, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(SETTING_BUTTON_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-    GPIO.setup(SETTING_BUTTON_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(SETTING_BUTTON_1, GPIO.IN)
+    GPIO.setup(SETTING_BUTTON_2, GPIO.IN)
+    GPIO.setup(SETTING_BUTTON_3, GPIO.IN)
 
     print("gpio setup")
 
@@ -57,7 +57,7 @@ def check_gpio_events(window, state):
     GPIO.add_event_detect(ROTARY_BUTTON, GPIO.FALLING, callback=lambda w, x: control.central_button(window, state),
                           bouncetime=1000)
 
-    GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.RISING, callback=lambda w, x: control.scroll_menu_up(window, state))
+    GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.BOTH, callback=lambda w, x: control.scroll_menu_up(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_2, GPIO.RISING, callback=lambda w, x: control.scroll_menu_down(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_3, GPIO.RISING, callback=close())
 
