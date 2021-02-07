@@ -4,8 +4,6 @@ from radio import main
 from ui.input import keyboard
 
 
-
-
 def run_loop(window, state):
     old_ticks = 0
     tick_count = 1
@@ -39,7 +37,7 @@ def run_loop(window, state):
             # start_ui
             if state.actual_ui == "start_ui":
                 main.update_ui(window, state, "clock")
-                if tick_count % 60 is 0:
+                if tick_count % 120 is 0:
                     main.update_ui(window, state, "weather")
             elif state.actual_ui == "play_ui":
                 if len(state.actual_playing_song) is "":
