@@ -37,7 +37,7 @@ def setup():
     GPIO.add_event_detect(ROTARY_BUTTON, GPIO.FALLING) # , callback=lambda w, x: control.central_button(window, state),
                        #   bouncetime=1000)
 
-    GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.BOTH) # , callback=lambda w, x: control.scroll_menu_up(window, state))
+    GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.FALLING) # , callback=lambda w, x: control.scroll_menu_up(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_2, GPIO.RISING) # , callback=lambda w, x: control.scroll_menu_down(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_3, GPIO.RISING) # , callback=close())
 
