@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd /Users/pascal/Code/optaradio
-
 # remove old font files, mini.css and emoji-test-txt
 rm -f ./optaradio/res/SourceSansPro-Regular.ttf ./optaradio/res/SourceSansPro-Semibold.ttf ./web/static/SourceSansPro-Regular.ttf ./web/static/SourceSansPro-Semibold.ttf ./web/static/SourceSansPro-Regular.woff ./web/static/SourceSansPro-Semibold.woff ./web/static/mini.css ./optaradio/res/flags/*
 
