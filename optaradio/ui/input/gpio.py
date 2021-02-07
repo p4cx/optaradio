@@ -24,7 +24,6 @@ SETTING_BUTTON_3 = 4
 
 
 def setup():
-    global ROTARY_CLK_LAST
     GPIO.setup(ROTARY_CLK, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ROTARY_DT, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(ROTARY_BUTTON, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -33,22 +32,25 @@ def setup():
     GPIO.setup(SETTING_BUTTON_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.setup(SETTING_BUTTON_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+    print("gpio setup")
+
+
+def rotary_change(window, state):
+    ROTARY_CLK_ACTUAL = GPIO.input(ROTARY_CLK)
+
+    if ROTARY_CLK_ACTUAL != ROTARY_CLK_LAST:
+
+        if GPIO.input(ROTARY_DT) != ROTARY_CLK_ACTUAL:
+            control.scroll_menu_down(window, state)
+        else:
+            control.scroll_menu_up(window, state)
+
 
 def check_gpio_events(window, state):
     def close():
             pg.quit()
             GPIO.cleanup()
             sys.exit()
-
-    def rotary_change(window, state):
-        ROTARY_CLK_ACTUAL = GPIO.input(ROTARY_CLK)
-
-        if ROTARY_CLK_ACTUAL != ROTARY_CLK_LAST:
-
-            if GPIO.input(ROTARY_DT) != ROTARY_CLK_ACTUAL:
-                control.scroll_menu_down(window, state)
-            else:
-                control.scroll_menu_up(window, state)
 
     ROTARY_CLK_LAST = GPIO.input(ROTARY_CLK)
     GPIO.add_event_detect(ROTARY_CLK, GPIO.BOTH, callback=lambda w, x: rotary_change(window, state), bouncetime=50)
@@ -58,6 +60,9 @@ def check_gpio_events(window, state):
     GPIO.add_event_detect(SETTING_BUTTON_1, GPIO.RISING, callback=lambda w, x: control.scroll_menu_up(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_2, GPIO.RISING, callback=lambda w, x: control.scroll_menu_down(window, state))
     GPIO.add_event_detect(SETTING_BUTTON_3, GPIO.RISING, callback=close())
+
+    if GPIO.event_detected(SETTING_BUTTON_1):
+        print('Button pressed')
 
 
 
