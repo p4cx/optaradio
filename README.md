@@ -32,7 +32,7 @@ This is no step to step instruction, so you should take your time and think your
 
 You can run the radio software as standalone on your desktop, buts that a bit stupid, because there are way better tools to play internet radio on your pc.
 
-##### prepare 🥧
+#### prepare 🥧
 [all commands in your user space: `/home/pi` unless its explicit declared]
 
 1. flash [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/) on a micro sd card
@@ -64,13 +64,13 @@ Attention: get sure, that units is metric: "units=metric".
 	- insert ```@reboot sh /home/pi/optaradio/radio_startup.sh >/home/pi/optaradio/logs/cronlog 2>&1```
 9. test it and if it runs: be happy
 
-##### developing
+#### developing 💻
 
 - activate X11 fowarding on your host machine (sshd config)    
 `ssh pi@x.x.x.x -Y` on your machine and you will get the pygame window on your desktop
 - how do get radiothumbnails on the pi? Copy it manually with filezilla!
 
-##### gpio usage 💡
+#### gpio usage 💡
 
 | USAGE | PIN | PIN | USAGE |
 |:---|---:|:---|---:|
@@ -95,12 +95,12 @@ Attention: get sure, that units is metric: "units=metric".
 | -- | __26__ | __20__ | -- |
 | -- | __GND__ | __21__ | -- |
 
-##### run the 🐍 radio software 
+#### run the 🐍 radio software 
 1. `cd ./optaradio`
 2. `python3 ./init.py`
 
-#### use optaradio
-basic idea of controlling the radio: Like iDrive from BMW, rotate the wheel (in my case the KY040 rotary encoder) to go up and down und press it to activate menu entry.   
+#### control optaradio
+basic idea of controlling the radio: Like iDrive from BMW, rotate the wheel (in my case the KY-040 rotary encoder) to go up and down und press it to activate menu entry.   
 
 **control on desktop:**    
 - `return`: input  
