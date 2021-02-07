@@ -2,6 +2,7 @@
 
 # remove old font files, mini.css and emoji-test-txt
 rm -f ./optaradio/res/SourceSansPro-Regular.ttf ./optaradio/res/SourceSansPro-Semibold.ttf ./web/static/SourceSansPro-Regular.ttf ./web/static/SourceSansPro-Semibold.ttf ./web/static/SourceSansPro-Regular.woff ./web/static/SourceSansPro-Semibold.woff ./web/static/mini.css ./optaradio/res/flags/*
+rm -rf ./optaradio/res/flags
 
 # clone ttf font files and copy them into the optaradio repo
 wget https://github.com/adobe-fonts/source-sans-pro/raw/1cac893f2d6535a2ff45818043985a4e88c1cf70/TTF/SourceSans3-Regular.ttf -O ./optaradio/res/SourceSansPro-Regular.ttf
