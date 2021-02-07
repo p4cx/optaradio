@@ -14,7 +14,6 @@ ROTARY_BUTTON = 14
 
 ROTARY_DIR = True
 ROTARY_COUNT = 0
-ROTARY_CLK_LAST = 0
 ROTARY_CLK_ACTUAL = 0
 ROTARY_DELAY = 0.005
 
@@ -43,18 +42,19 @@ def setup():
     print("gpio setup")
 
 
-def rotary_change(window, state):
-    ROTARY_CLK_ACTUAL = GPIO.input(ROTARY_CLK)
+def rotary_change(window, state, rotary_clk_last):
 
-    if ROTARY_CLK_ACTUAL != ROTARY_CLK_LAST:
+    if GPIO.input(ROTARY_CLK) != rotary_clk_last:
 
         if GPIO.input(ROTARY_DT) != ROTARY_CLK_ACTUAL:
             control.scroll_menu_down(window, state)
         else:
             control.scroll_menu_up(window, state)
 
+    return GPIO.input(ROTARY_CLK)
 
-def check_gpio_events(window, state):
+
+def check_gpio_events(window, state, rotary_clk_last):
     def close():
             pg.quit()
             GPIO.cleanup()
@@ -67,8 +67,7 @@ def check_gpio_events(window, state):
         control.central_button(window, state)
 
     if GPIO.event_detected(ROTARY_CLK):
-        ROTARY_CLK_LAST = GPIO.input(ROTARY_CLK)
-        rotary_change(window, state)
+        return rotary_change(window, state, rotary_clk_last)
 
 
 

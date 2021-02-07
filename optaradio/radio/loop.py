@@ -4,10 +4,13 @@ from radio import main
 from ui.input import keyboard
 
 
+
+
 def run_loop(window, state):
     old_ticks = 0
     tick_count = 1
     ground_tick = 500  # 0.5s update heart beat
+    rotary_clk_last = 0
 
     try:
         import RPi.GPIO
@@ -24,7 +27,7 @@ def run_loop(window, state):
         keyboard.check_keyboard_events(window, state)
 
         if gpio_available:
-            gpio.check_gpio_events(window, state)
+            rotary_clk_last = gpio.check_gpio_events(window, state, rotary_clk_last)
 
         actual_ticks = pg.time.get_ticks()
         delta_ticks = (actual_ticks - old_ticks)
