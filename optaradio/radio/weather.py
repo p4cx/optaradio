@@ -4,9 +4,18 @@ import urllib.request
 from globals_radio import *
 
 
+def read_url_from_file():
+    try:
+        with open(WEATHER_API_URL_CFG) as f:
+            lines = f.readlines()
+        return lines[0]
+    except IOError:
+        return ''
+
+
 def get_weather():
     try:
-        with urllib.request.urlopen(WEATHER_API_URL) as url:
+        with urllib.request.urlopen(read_url_from_file()) as url:
             data = json.loads(url.read().decode())
 
             temp = data['main']['temp']

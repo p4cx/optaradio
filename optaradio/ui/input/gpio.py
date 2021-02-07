@@ -40,10 +40,11 @@ def setup(window, state):
     GPIO.add_event_detect(SETTING_BUTTON_3, GPIO.RISING, callback=close)
 
 
-def close():
-        pg.quit()
-        GPIO.cleanup()
-        sys.exit()
+def check_gpio_events():
+    def close():
+            pg.quit()
+            GPIO.cleanup()
+            sys.exit()
 
 
 def rotary_change(window, state):

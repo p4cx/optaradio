@@ -10,7 +10,7 @@ WHITE = [255, 255, 255]
 WINDOW_FULL_SCREEN = True
 
 WEATHER_UPDATE_INTERVAL = 60000
-WEATHER_API_URL = 'http://api.openweathermap.org/data/2.5/weather?lat=48.17967085&lon=11.55411166&APPID=4bb9affe7b5f3e03e75eab31d6bd53f0&units=metric&&lang=en'
+WEATHER_API_URL_CFG = '/home/pi/weather.cfg'
 
 TIME_UPDATE_INTERVAL = 1000
 SONG_UPDATE_INTERVAL = 2500

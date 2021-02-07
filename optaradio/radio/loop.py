@@ -9,12 +9,22 @@ def run_loop(window, state):
     tick_count = 1
     ground_tick = 500  # 0.5s update heart beat
 
-    # if "Darwin" not in str(os.uname()):
-    #   from ui.input import gpio
-    #   gpio.setup(window, state)
+    try:
+        import RPi.GPIO
+        from ui.input import gpio
+
+        gpio_available = True
+    except ImportError:
+        gpio_available = False
+
+    if gpio_available:
+        gpio.setup(window, state)
 
     while True:
-        events = keyboard.check_keyboard_events(window, state)
+        keyboard.check_keyboard_events(window, state)
+
+        if gpio_available:
+            gpio.check_gpio_events()
 
         actual_ticks = pg.time.get_ticks()
         delta_ticks = (actual_ticks - old_ticks)
@@ -33,10 +43,5 @@ def run_loop(window, state):
                     main.update_ui(window, state, "")
                 if tick_count % 10 is 0:
                     main.update_ui(window, state, "")
-
-        for event in events:
-            print(str(event))
-            # if event.type == pg.event.NetworkEvents.EVENT_COMMAND:
-            #   print(" CLIENT MESSAGE FROM %s - %s " % (str(event.address), event.message))
 
         pg.time.wait(0)
