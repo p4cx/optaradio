@@ -3,8 +3,8 @@ import pygame as pg
 import json
 import copy
 
-from optaradio.globals import *
-from optaradio.ui.helper import cut_text
+from globals_radio import *
+from ui.helper import cut_text
 
 
 def load_settings_data():

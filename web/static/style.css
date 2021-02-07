@@ -18,7 +18,19 @@ html, * {
 body {
     background-color: #000;
     height: 100%;
+    margin: 0;
 }
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+a:hover {
+    color: #0277bd;
+}
+
+:focus {outline:0;}
 
 form {
     background: none;
@@ -27,6 +39,106 @@ form {
     border-radius: 0;
     margin: 0;
     padding: 0;
+}
+
+input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    font-size: 0px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.station_cover {
+    background-size: 250px;
+    background-position: center;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.station_cover:after {
+  position: absolute;
+  content: " ";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.station_information {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.station_control {
+}
+
+.station_textbox {
+    padding: 0 0 0 90px;
+    margin: 15px 0 0 0;
+}
+
+.playing {
+    position: fixed;
+    background-color: rgba(255, 0, 0, 0.5) !important;
+    border: none !important;
+    bottom: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.control_playing {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header {
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+    padding: 10px 0;
+    font-size: 30px;
+    color: #ffffff;
+    position: relative;
+    height: 50px;
+}
+
+.row {
+    max-width: 900px;
+    margin: 20px auto 0 auto;
+}
+
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out;
+}
+
+@keyframes sweep {
+  0%    {opacity: 0; margin-left: 10px}
+  100%  {opacity: 1; margin-left: 0px}
+}
+
+summary::marker {
+    content: "▿";
+}
+
+details[open] summary::marker {
+    content: "▾︎";
+}
+
+summary {
+    vertical-align: center;
+}
+
+summary:hover{
+    color: #0277bd;
 }
 
 .frame {
@@ -46,10 +158,20 @@ footer {
     padding: calc(2 * var(--universal-padding)) 0;
 }
 
-.logo_image {
-    margin: 0 10px;
-    position: relative;
-    top: 7px;
+.logo {
+    position: absolute;
+    background: url("./logo.png");
+    height: 48px;
+    width: 48px;
+    left: 11px;
+}
+
+.setting_button {
+    position: absolute;
+    background: url("./setting.png");
+    height: 48px;
+    width: 48px;
+    right: 0px;
 }
 
 .button.nav {
@@ -103,9 +225,19 @@ fieldset {
     margin-bottom: 20px;
 }
 
+.spacer_100 {
+    margin-bottom: 100px;
+}
+
 .row_title {
     text-align: right;
     padding: 0 20px 0 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .row_title {
+        text-align: left;
+    }
 }
 
 .report_message {
@@ -120,54 +252,82 @@ fieldset {
 }
 
 .del_radio_station {
-    background-image: url("./del_normal.png");
-    background-repeat: no-repeat;
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
+    background: transparent url("./del_s.png") no-repeat bottom left;
+    width: 48px;
+    height: 48px;
     transition: none;
     color: transparent;
     font-size: 0;
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    margin: 10px 0 0 10px;
+    float: right;
 }
 
 .del_radio_station:hover {
-    background-image: url("./del_hover.png");
-    background-repeat: no-repeat;
+    background-position: bottom right;
     background-color: transparent;
+
 }
 
-
 .mod_radio_station {
-    background-image: url("./mod_normal.png");
-    background-repeat: no-repeat;
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
+    background: transparent url("./mod_s.png") no-repeat bottom left;
+    width: 48px;
+    height: 48px;
     transition: none;
     color: transparent;
     font-size: 0;
-    position: absolute;
-    top: 5px;
-    right: 45px;
+    margin: 10px auto;
+    float: right;
 }
 
 .mod_radio_station:hover {
-    background-image: url("./mod_hover.png");
-    background-repeat: no-repeat;
+    background-position: bottom right;
     background-color: transparent;
 }
 
-.add_station_button {
-    background-image: url("./add_normal.png");
+.play_radio_station {
+    background: transparent url("./play_s.png") no-repeat bottom left;
+    width: 48px;
+    height: 48px;
+    margin: 11px;
+    transition: none;
+    color: transparent;
+    font-size: 0;
+    z-index: 1;
+    position:relative;
+}
+
+.play_radio_station:hover {
+    background: transparent url("./play_s.png") no-repeat bottom right;
+}
+
+.play_station_button {
+    background: transparent url("./play.png") no-repeat bottom left;
+    display: block;
+    margin: 0 10px 20px 10px;
     height: 72px;
     width: 72px;
+    float: left;
+}
+
+.play_station_button:hover {
+    background-position: bottom right;
+}
+
+.add_station_button {
+    background: transparent url("./add.png") no-repeat bottom left;
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 10px 20px 10px;
+    height: 72px;
+    width: 72px;
+    float: left;
 }
 
 .add_station_button:hover {
-    background-image: url("./add_hover.png");
+    background-position: bottom right;
 }
+
+.clear {
+    clear: both;
+}
+
+

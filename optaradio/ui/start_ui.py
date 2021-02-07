@@ -2,9 +2,9 @@ import time as t
 
 import pygame as pg
 
-from optaradio.globals import *
-from optaradio.radio import weather
-from optaradio.ui import bar
+from globals_radio import *
+from radio import weather
+from ui import bar
 
 
 def run(window, state):

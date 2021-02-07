@@ -1,9 +1,7 @@
-import os
-
 import pygame as pg
 
-from optaradio.radio import main
-from optaradio.ui.input import keyboard
+from radio import main
+from ui.input import keyboard
 
 
 def run_loop(window, state):
@@ -11,12 +9,12 @@ def run_loop(window, state):
     tick_count = 1
     ground_tick = 500  # 0.5s update heart beat
 
-    if "Darwin" not in str(os.uname()):
-        from optaradio.ui.input import gpio
-        gpio.setup(window, state)
+    # if "Darwin" not in str(os.uname()):
+    #   from ui.input import gpio
+    #   gpio.setup(window, state)
 
     while True:
-        keyboard.check_keyboard_events(window, state)
+        events = keyboard.check_keyboard_events(window, state)
 
         actual_ticks = pg.time.get_ticks()
         delta_ticks = (actual_ticks - old_ticks)
@@ -36,5 +34,9 @@ def run_loop(window, state):
                 if tick_count % 10 is 0:
                     main.update_ui(window, state, "")
 
-        pg.time.wait(0)
+        for event in events:
+            print(str(event))
+            # if event.type == pg.event.NetworkEvents.EVENT_COMMAND:
+            #   print(" CLIENT MESSAGE FROM %s - %s " % (str(event.address), event.message))
 
+        pg.time.wait(0)

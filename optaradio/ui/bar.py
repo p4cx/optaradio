@@ -1,6 +1,6 @@
 import pygame as pg
 
-from globals import *
+from globals_radio import *
 
 
 def add_bar(window, state):

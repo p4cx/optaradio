@@ -1,7 +1,8 @@
 flask==1.1.1
-flask_wtf==0.14.2
-Pillow==6.2.0
-pygame==1.9.4
+flask_wtf==0.14.3
+Pillow==7.1.0
+pygame==1.9.6
 python-vlc==3.0.7110
-urllib3==1.25.3
-werkzeug==0.15.6
+urllib3==1.25.8
+werkzeug==1.0.0
+uwsgi==2.0.18

@@ -1,9 +1,9 @@
 import pygame as pg
 
-from optaradio.globals import *
-from optaradio.radio import actual_state, station_list, player, loop
-from optaradio.ui import start_ui, menu_ui, play_ui, setting_ui
-from optaradio.ui.helper import cut_text, setting_handler
+from globals_radio import *
+from radio import actual_state, station_list, player, loop
+from ui import start_ui, menu_ui, play_ui, setting_ui
+from ui.helper import cut_text, setting_handler
 
 
 def run():

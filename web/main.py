@@ -1,5 +1,6 @@
 from flask import *
-from globals import *
+from flask_socketio import SocketIO, send
+from globals_web import *
 from app.forms import *
 from app import helpers, station_model
 from werkzeug.utils import secure_filename
@@ -7,6 +8,7 @@ import os
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
+socket_io = SocketIO(app)
 
 
 @app.route("/station_form")
@@ -93,9 +95,17 @@ def stations():
     return render_template('stations.html', station_list=station_model.get())
 
 
+def send_message():
+    print("send hello")
+
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ['png']
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    socket_io.run(app, host='0.0.0.0', port=80)
+
+
+application = app
+

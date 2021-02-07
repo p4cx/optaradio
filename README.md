@@ -23,11 +23,17 @@ you can run the radio software as standalone on your desktop, buts that a bit st
 
 #### prepare 🥧
 1. copy [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/) on a micro sd card and inserted it in the Raspberry Pi (mine is a 3rd gen., model B, rev 1.2)
-2. turn SSH on and put a key file on that puppy (because nobody wants to type `raspberry` in over a 1000 times)
+2. Run `sudo raspi-config` and ...
+    - ... turn SSH on and put a key file on that puppy (because nobody wants to type `raspberry` in over a 1000 times)
+    - ... set `Boot Option -> B1 Desktop / CLI` to `B2 Console Autologin`
 3. remove boring booting stuff
    - add `disable_splash=1` at the end of `/boot/config.txt` and save
    - add `logo.nologo quiet` and change `console=tty1` to `console=tty3` in `/boot/cmdline.txt` and save
-4. try to run the radio software properly before you start with step 5
+4. run `sudo apt-get update`
+5. run  `sudo apt-get install python3-pip python3-dev nginx vlc uwsgi xorg libsdl-ttf2.0-0 pulseaudio`
+6. run `pip3 -r install requirements.txt` in the freshly cloned optaradio repo
+
+
 5. create a crontab for autostart
 	- `sudo crontab -e`
 	- insert ```@reboot sh /home/pi/optaradio/radio_startup.sh >/home/pi/optaradio/logs/cronlog 2>&1```

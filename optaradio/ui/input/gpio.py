@@ -8,16 +8,15 @@ from ui.input import control
 GPIO.setmode(GPIO.BCM)
 
 # rotary encoder
-ROTARY_CLK = 5
-ROTARY_DT = 6
-ROTARY_BUTTON = 13
+ROTARY_CLK = 18
+ROTARY_DT = 15
+ROTARY_BUTTON = 14
 
 ROTARY_DIR = True
 ROTARY_COUNT = 0
 ROTARY_CLK_LAST = 0
 ROTARY_CLK_ACTUAL = 0
 ROTARY_DELAY = 0.005
-
 
 SETTING_BUTTON_1 = 2
 SETTING_BUTTON_2 = 3
@@ -56,6 +55,8 @@ def rotary_change(window, state):
             control.scroll_menu_down(window, state)
         else:
             control.scroll_menu_up(window, state)
+
+
 
 
 

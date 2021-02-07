@@ -1,6 +1,7 @@
-from optaradio.radio import player
-from optaradio.ui.helper import cut_text
-from optaradio.globals import *
+from radio import player
+from ui.helper import cut_text
+from globals_radio import *
+
 import pygame as pg
 
 

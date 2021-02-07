@@ -10,7 +10,9 @@ def check_keyboard_events(window, state):
         pg.quit()
         sys.exit()
 
-    for event in pg.event.get():
+    events = pg.event.get()
+
+    for event in events:
         if event.type == pg.QUIT:
             close()
 
@@ -27,9 +29,9 @@ def check_keyboard_events(window, state):
         elif event.type == pg.KEYDOWN and event.key == pg.K_q:
             control.back(window, state)
         elif event.type == pg.KEYDOWN and event.key == pg.K_w:
-            control.switch_led(window, state)
-        elif event.type == pg.KEYDOWN and event.key == pg.K_e:
             control.switch_audio(window, state)
+        elif event.type == pg.KEYDOWN and event.key == pg.K_e:
+            control.switch_led(window, state)
         elif event.type == pg.KEYDOWN and event.key == pg.K_r:
             control.open_setting(window, state)
 
@@ -47,3 +49,5 @@ def check_keyboard_events(window, state):
             control.play_favourite(window, state, 6)
         elif event.type == pg.KEYDOWN and event.key == pg.K_7:
             control.play_favourite(window, state, 7)
+
+    return events

@@ -1,7 +1,7 @@
 import pygame as pg
 
-from optaradio.globals import *
-from optaradio.ui import bar
+from globals_radio import *
+from ui import bar
 
 
 def run(window, state):

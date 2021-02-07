@@ -1,9 +1,7 @@
 import json
 import urllib.request
 
-from weather_url import *
-from globals import *
-
+from globals_radio import *
 
 
 def get_weather():

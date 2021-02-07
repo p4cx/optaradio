@@ -1,5 +1,5 @@
 import csv
-from globals import *
+from globals_web import *
 from PIL import Image, ImageFilter
 
 try:

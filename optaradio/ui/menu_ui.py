@@ -1,6 +1,6 @@
 import pygame as pg
 
-from globals import *
+from globals_radio import *
 from ui.helper import cut_text
 from ui import bar
 

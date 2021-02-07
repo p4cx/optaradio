@@ -1,45 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
-<a class="add_station_button" href="/station_form"></a>
 {% for station in station_list %}
 <form action="/action_station" method="post">
     <div class="row">
-        <div class="col-sm-12">
-            <div class="card fluid">
-                <div class="section">
-                    <img class="header_image" src="/image/{{ station[4] }}" alt="header">
-                        <input class="del_radio_station" type="submit" name="del_radio_station" value="{{ station[1] }}"/>
-                        <input class="mod_radio_station" type="submit" name="mod_radio_station" value="{{ station[1] }}"/>
-                    </img>
-                    <div class="row responsive-label spacer_20">
-                        <div class="col-sm-12 col-md-3 row_title">Station name</div>
-                        <div class="col-sm-12 col-md">{{ station[1] }}</div>
-                    </div>
-                    <div class="row responsive-label spacer_20">
-                        <div class="col-sm-12 col-md-3 row_title">Stream url</div>
-                        <div class="col-sm-12 col-md"><a href="{{ station[2] }}" target="_blank">{{ station[2] }}</a></div>
-                    </div>
-                    <div class="row responsive-label spacer_20">
-                        <div class="col-sm-12 col-md-3 row_title">Description</div>
-                        <div class="col-sm-12 col-md">{{ station[3] }}</div>
-                    </div>
-                    <div class="row responsive-label spacer_20">
-                        <div class="col-sm-12 col-md-3 row_title">Country</div>
-                        <div class="col-sm-12 col-md">{{ station[5] }}</div>
-                    </div>
-                </div>
+        <div class="station_cover" style='background-image: url("/image/{{ station[4] }}");'>
+            <div class="play_radio_station">
+                <div class="input_station_button" type="submit" name="play_radio_station" value="{{ station[1] }}"></div>
             </div>
         </div>
+        <div class="station_information">
+            <details>
+                <summary>&nbsp;&nbsp;{{ station[1] }}</summary>
+                <div class="station_textbox">
+                    <p>{{ station[3] }}</p>
+                    <p><a href="{{ station[2] }}" target="_blank">Radio</a> from {{ station[5] }}</p>
+                    <div class="station_control">
+                        <div class="del_radio_station">
+                            <input class="input_station_button" type="submit" name="del_radio_station" value="{{ station[1] }}"/>
+                        </div>
+                        <div class="mod_radio_station">
+                            <input class="input_station_button" type="submit" name="mod_radio_station" value="{{ station[1] }}"/>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+        <div class="clear"></div>
+
     </div>
 </form>
 {% endfor %}
 {% if station_list|length == 0 %}
 <div class="row">
-    <div class="col-sm-12">
-        <div class="card fluid">
-            <div class="section"><mark class="inline-block secondary">Oups!</mark><span class="report_message">Maybe you should add some radio stations.</span></div>
-        </div>
-    </div>
+    <div class="section"><mark class="">Oups!</mark><span class="">Maybe you should add some radio stations.</span></div>
 </div>
 {% endif %}
 {% endblock %}
